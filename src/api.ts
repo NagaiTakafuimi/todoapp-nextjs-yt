@@ -1,7 +1,7 @@
 import { Task } from "./types";
 
 export const getAllTodos = async (): Promise<Task[]> => {
-    const res = await fetch(`http://localhost:3001/tasks`, {
+    const res = await fetch(`http://localhost:3005/tasks`, {
         cache: "no-store", //SSR or CSR（クライアントサイドレンダリング、useEffectでフェッチ）
     });
     const todos = res.json();
@@ -10,7 +10,7 @@ export const getAllTodos = async (): Promise<Task[]> => {
 };
 
 export const addTodo = async (todo: Task): Promise<Task> => {
-    const res = await fetch(`http://localhost:3001/tasks`, {
+    const res = await fetch(`http://localhost:3005/tasks`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -26,7 +26,7 @@ export const updateTodo = async (
     id: string,
     newText: string
     ): Promise<Task> => {
-    const res = await fetch(`http://localhost:3001/tasks/${id}`, {
+    const res = await fetch(`http://localhost:3005/tasks/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -39,7 +39,7 @@ export const updateTodo = async (
 };
 
 export const deleteTodo = async (id: string ): Promise<Task> => {
-    const res = await fetch(`http://localhost:3001/tasks/${id}`, {
+    const res = await fetch(`http://localhost:3005/tasks/${id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
